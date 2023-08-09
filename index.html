@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Trunk assets
+        Include any directories or files to be copied to build here
+    -->
+    <link data-trunk rel="copy-dir" href="assets" />
+    <title>wgpu WASM</title>
+</head>
+
+<body style="margin:0; overflow:hidden;">
+  <script type="module">
+      import init from "./pkg/wgpu-hello-world.js";
+      init().then(() => {
+          console.log("WASM Loaded");
+      });
+  </script>
+  <style>
+      canvas {
+          background-color: black;
+          /* width: 100% !important; */
+          /* height: 100vh !important; */
+      }
+  </style>
+</body>
+
+</html>
