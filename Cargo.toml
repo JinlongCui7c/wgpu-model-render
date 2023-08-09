@@ -1,0 +1,41 @@
+[package]
+name = "wgpu-hello-world"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.65"
+bytemuck = { version = "1.12.1", features = [ "derive" ] }
+cfg-if = "1.0.0"
+cgmath = "0.18.0"
+env_logger = "0.9.1"
+gltf = "1.0.0"
+image = { version = "0.24.4", default-features = false, features = ["png", "jpeg"] }
+log = "0.4.17"
+pollster = "0.2.5"
+tobj = { version = "3.2.1", features = [
+    "async",
+]}
+wgpu = "0.13.1"
+winit = "0.27.3"
+
+
+[build-dependencies]
+anyhow = "1.0"
+fs_extra = "1.2"
+glob = "0.3"
+ 
+
+# Exports to Rust and C/C++ library
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[package.metadata.android]
+build_targets = ["armv7-linux-androideabi", "aarch64-linux-android"]
+target_sdk_version = 29
+min_sdk_version = 23
+
+[target.'cfg(target_os = "android")'.dependencies]
+ndk-glue = "0.1.0"
